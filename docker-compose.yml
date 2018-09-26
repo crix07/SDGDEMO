@@ -1,0 +1,20 @@
+version: '3'
+services:
+  web:
+    build: ./angular-app/SDGDEMO
+    ports:
+    - "80:80"
+    links:
+    - node
+    volumes:
+    - "C:/Users/Crist/Desktop/SDG_DEMO/angular-app/SDGDEMO/dist/SDGDEMO:/usr/share/nginx/html"
+  node:
+    build: ./node-app
+    ports:
+    - "3000:3000"
+    links:
+    - mongo
+  mongo:
+    image: mongo
+    ports: 
+    - "27017:27017"

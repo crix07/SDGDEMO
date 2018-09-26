@@ -1,0 +1,47 @@
+<div class="login animated fadeIn" style="margin-top:100px;">
+
+  <div class="formulario animated fadeIn">
+
+      <div class="top-content">
+
+          <div class="inner-bg">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-sm-12">
+
+                          <div class="form-box">
+                              <div class="form-top">
+                                  <div class="form-top-center">
+                                      <h3>INICIO SESIÓN</h3>
+                                      <p>Ingrese correo y contraseña para iniciar sesión.</p>
+                                  </div>
+                              </div>
+                              <div class="form-bottom">
+                                  <form [formGroup]="login" (ngSubmit)="loginForm()" class="login-form">
+
+                                      <div class="form-group" style="display: flex; align-items: center;">
+                                          <i style="margin-right: 20px; color: #fc7a00; font-size: 25px;" class="fas fa-envelope"></i>
+                                          <input type="email" formControlName="email" name="email" placeholder="Correo Electrónico" class="form-username form-control">
+                                      </div>
+
+                                      <div *ngIf="this.login.controls.email.invalid && this.login.controls.email.dirty">
+                                          Tu correo electrónico no se ve del todo bien...
+                                      </div>
+
+                                      <div style="display: flex; align-items: center;" class="form-group">
+                                          <i style="margin-right: 20px; color: #fc7a00; font-size: 25px;" class="fas fa-lock"></i>
+                                          <input type="password" formControlName="password" name="password" placeholder="Contraseña" class="form-password form-control">
+                                      </div>
+
+                                      <button type="submit" style="background-color: rgba(0, 140, 255, 0.959); color: #fff;" class="btn">INICIAR SESIÓN</button>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<br>

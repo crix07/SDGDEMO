@@ -1,0 +1,33 @@
+<div class="animated fadeIn" id="sidebar">
+  <div style="background: #FDFDFD;margin: 20px;padding: 10px 20px;height: 500px;overflow: auto;">
+
+  <ul style="padding: 0;">
+      <li (click)="clickProduct(product._id)" *ngFor="let product of _userservice.productos" class="list">
+            {{ product.nombre }}, {{ product.calle }}
+      </li>
+  </ul>
+  <div *ngIf="_userservice.productos.length < 1">
+      <p>Lo sentimos, no se encontraron productos</p>
+  </div>
+
+</div>
+
+
+  <div *ngIf="_userservice.usuario" style="display: flex;justify-content: space-around;position: absolute;bottom: 50px;width: 100%;">
+      <div>
+      <button (click)="addProduct()" style="background: transparent;font-size: 12px;color: #7B7A7A;" class="btn">
+          <i style="color: #7B7A7A;" class="fas fa-plus"></i>
+          AGREGAR PRODUCTO
+      </button>
+  </div>
+  <div>
+      <button (click)="onSignOut()" style="background: transparent;font-size: 13px;color: #7B7A7A;" class="btn">Cerrar Sesión</button>
+  </div>
+  </div>
+
+  <div style="display: flex;justify-content: center;position: absolute;width: 100%;bottom: 50px;">
+      <a *ngIf="!_userservice.usuario" class="btn btn-success" [routerLink]="['/login']">Login</a>
+  </div>    
+
+
+</div>

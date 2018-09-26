@@ -1,0 +1,147 @@
+<div *ngIf="locationActived" class="login animated fadeIn" style="margin-top:100px;">
+
+  <div class="formulario animated fadeIn">
+
+      <div class="top-content">
+
+          <div class="inner-bg">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-sm-12">
+
+                          <div class="form-box">
+                              <div class="form-top">
+                                  <div class="form-top-center">
+                                      <h3>Actualizar Producto</h3>
+                                  </div>
+
+                              </div>
+                              <div class="form-bottom">
+                                  <form [formGroup]="product" (ngSubmit)="actualizarProduct()" class="login-form">
+                                      <div class="add_conta">
+                                          <div>
+                                              <div class="input-group input-group-sm mb-2">
+                                                  <div class="input-group-prepend">
+                                                      <span class="input-group-text" id="inputGroup-sizing-sm">NOMBRE</span>
+                                                  </div>
+                                                  <input type="text" formControlName="nombre" name="nombre" placeholder="nombre" class="form-control col-md-8" [ngClass]="{ 'is-invalid': product.controls['nombre'].errors?.required && product.controls['nombre'].touched }" aria-label="Small"
+                                                      aria-describedby="inputGroup-sizing-sm">
+                                                  <div class="invalid-feedback" *ngIf="product.controls['nombre'].errors?.required && product.controls['nombre'].touched">
+                                                      El nombre es necesario.
+                                                  </div>
+                                              </div>
+                                              <div class="input-group input-group-sm mb-2">
+                                                  <div class="input-group-prepend">
+                                                      <span class="input-group-text" id="inputGroup-sizing-SM">MARCA</span>
+                                                  </div>
+                                                  <input type="text" [ngClass]="{ 'is-invalid': product.controls['marca'].errors?.required && product.controls['marca'].touched }" formControlName="marca" name="marca" placeholder="marca" class="form-control col-md-8"
+                                                      aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                                                  <div class="invalid-feedback" *ngIf="product.controls['marca'].errors?.required && product.controls['marca'].touched">
+                                                      la marca es necesaria.
+                                                  </div>
+                                              </div>
+
+                                              <div class="input-group input-group-sm mb-2">
+                                                  <div class="input-group-prepend">
+                                                      <span class="input-group-text" id="inputGroup-sizing-sm">COLOR</span>
+                                                  </div>
+                                                  <input type="text" formControlName="color" name="color" [ngClass]="{ 'is-invalid': product.controls['color'].errors?.required && product.controls['color'].touched }" placeholder="color" class="form-control col-md-8" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                                                  <div class="invalid-feedback" *ngIf="product.controls['color'].errors?.required && product.controls['color'].touched">
+                                                      El color es necesario.
+                                                  </div>
+                                              </div>
+                                              <div class="input-group input-group-sm mb-4">
+                                                  <div class="input-group-prepend">
+                                                      <span class="input-group-text" id="inputGroup-sizing-sm">PRECIO</span>
+                                                  </div>
+                                                  <input type="number" formControlName="precio" [ngClass]="{ 'is-invalid': product.controls['precio'].errors?.required && product.controls['precio'].touched }" name="precio" placeholder="precio" class="form-control col-md-8" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                                                  <div class="invalid-feedback" *ngIf="product.controls['precio'].errors?.required && product.controls['precio'].touched">
+                                                      El precio es necesario.
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div>
+                                              <p>DIRECCIÓN</p>
+                                              <div class="input-group input-group-sm mb-2">
+                                                  <div class="input-group-prepend">
+                                                      <span class="input-group-text" id="inputGroup-sizing-sm">REGIÓN</span>
+                                                  </div>
+                                                  <input type="text" formControlName="region" name="region" placeholder="REGIÓN" class="form-control col-md-10" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                              </div>
+
+                                              <div class="input-group input-group-sm mb-2">
+                                                  <div class="input-group-prepend">
+                                                      <span class="input-group-text" id="inputGroup-sizing-SM">PROVINCIA</span>
+                                                  </div>
+                                                  <input type="text" formControlName="provincia" name="provincia" placeholder="PROVINCIA" class="form-control col-md-10" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                                              </div>
+
+                                              <div class="input-group input-group-sm mb-2">
+                                                  <div class="input-group-prepend">
+                                                      <span class="input-group-text" id="inputGroup-sizing-sm">MUNICIPIO</span>
+                                                  </div>
+                                                  <input type="text" formControlName="municipio" name="municipio" placeholder="MUNICIPIO" class="form-control col-md-10" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                                              </div>
+                                              <div class="input-group input-group-sm mb-2">
+                                                  <div class="input-group-prepend">
+                                                      <span class="input-group-text" id="inputGroup-sizing-sm">CIUDAD</span>
+                                                  </div>
+                                                  <input type="text" formControlName="ciudad" name="ciudad" placeholder="CIUDAD" class="form-control col-md-10" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                                              </div>
+                                              <div class="input-group input-group-sm mb-2">
+                                                  <div class="input-group-prepend">
+                                                      <span class="input-group-text" id="inputGroup-sizing-sm">SECTOR/BARRIO</span>
+                                                  </div>
+                                                  <input type="text" formControlName="sector" name="sector" placeholder="SECTOR/BARRIO" class="form-control col-md-10" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                                              </div>
+                                              <div class="input-group input-group-sm mb-2">
+                                                  <div class="input-group-prepend">
+                                                      <span class="input-group-text" id="inputGroup-sizing-sm">CALLE</span>
+                                                  </div>
+                                                  <input type="text" formControlName="calle" name="calle" placeholder="CALLE" class="form-control col-md-12" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div>
+                                          <div class="input-group input-group-sm mb-2">
+                                              <div class="input-group-prepend">
+                                                  <span class="input-group-text" id="inputGroup-sizing-sm">GEOREFERENCIA</span>
+                                              </div>
+                                              <input type="text" formControlName="georeferencia" name="georeferencia" placeholder="GEOREFERENCIA" class="form-control col-md-10" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                                          </div>
+                                      </div>
+
+                                      <button type="submit" style="align-self: center; margin-top: 20px; margin-bottom: 20px;" class="btn btn-success">Actualizar Producto</button>
+                                      <button type="button" (click)="locationActived = false" style="align-self: center;margin-top: 20px; margin-bottom: 20px" class="btn">Cambiar Ubicación</button>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<div *ngIf="!locationActived" class="form-top-center">
+  <h3>Cambiar Ubicación</h3>
+</div>
+
+<!-- <div style="display: flex; justify-content: center;">
+  <input type="text" (keyup)="eligir(lat.value)" #lat placeholder="latitude" class="form-control col-md-2" />
+  <input type="text" (keyup)="eligir(long.value)" #long placeholder="longitude" class="form-control col-md-2" />
+</div> -->
+
+<button *ngIf="!locationActived" (click)="siguiente()" class="btn btn-success">Siguiente</button>
+
+<agm-map *ngIf="!locationActived" [zoom]="10" [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
+  <agm-marker *ngIf="!locationActived" [latitude]="latitude" [longitude]="longitude">
+      <agm-info-window>
+          <h6><strong>Detalles de Localización</strong></h6>
+          <p>{{ name_address }}</p>
+      </agm-info-window>
+  </agm-marker>
+</agm-map>

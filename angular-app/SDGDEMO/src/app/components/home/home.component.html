@@ -1,0 +1,28 @@
+<app-sidebar (AgenciaClick)="VerProducto($event)"></app-sidebar>
+<agm-map [zoom]="10" [latitude]="latitude" [longitude]="longitude">
+    <agm-marker style="color: #4285f4; " (markerClick)="openWindow(product._id)" *ngFor="let product of _userservice.productos; let i = index" [latitude]="product.latitude" [longitude]="product.longitude">
+        <agm-info-window [maxWidth]="350" [isOpen]="isInfoWindowOpen(product._id)" [latitude]="product.latitude" [longitude]="product.longitude">
+            <h6><strong>{{ product.nombre }}</strong></h6>
+
+            <p>{{ product.marca }}</p>
+            <p>{{ product.color }}</p>
+            <p>{{ product.precio }}</p>
+            <p>{{ product.calle }}</p>
+            <div style="display: flex; justify-content: space-around;">
+                <a (click)="viewProduct(product._id)" class="btn">
+                    <span><strong style="color: #fc7a00;">Ver</strong></span>
+                </a>
+                <a *ngIf="_userservice.usuario" (click)="editProduct(product._id)" class="btn">
+                    <span><strong style="color: #4285f4;">Editar</strong></span>
+                </a>
+                <a *ngIf="_userservice.usuario" (click)="deleteProduct(product._id)" class="btn">
+                    <span><strong style="color: #dc3545;">Eliminar</strong></span>
+                </a>
+            </div>
+        </agm-info-window>
+    </agm-marker>
+</agm-map>
+
+<div *ngIf="_userservice.usuario" class="pointer" (click)="addAgen()" style="background-color: #4D86B7; border-radius: 100%;justify-content: center;align-items: center;display: flex;width: 50px;height: 50px;position: fixed;bottom: 10px;right: 10px;">
+    <i style="padding: 10px; color: white; font-size: 20px;" class="fas fa-plus"></i>
+</div>

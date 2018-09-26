@@ -1,0 +1,15 @@
+<nav style="align-items: baseline;" class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div style="display: flex;align-items: center;">
+      <i (click)="toggle()" style="cursor: pointer;margin-right: 20px;position: relative;" class="fas fa-align-justify icontoggle"></i>
+      <a class="navbar-brand" style="display: flex; flex-direction: row; align-items: center;" [routerLink]="['/']">
+        <img style="width: 200px" height="100%" src="assets/sdg-logo.png" /> 
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['/distancias']" >Medir Distancias</a>
+          </li>
+        </ul>
+      </div>
+  </div>    
+</nav>
