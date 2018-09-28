@@ -1,29 +1,31 @@
 
 <h3>Medir distancias</h3>
 
+
+<!-- Example single danger button -->
+
+
 <div class="row">
     <div class="col-sm-6">
-        <div class="panel panel-success">
-            <div *ngIf="userservice.productos.length > 0" class="panel-heading">Disponible para arrastrar</div>
-            <div *ngIf="userservice.productos.length < 1" class="panel-heading">No disponible para arrastrar</div>
-            <div class="panel-body">
-                <div class="panel panel-default" dnd-draggable [dragEnabled]="true" [dragData]="userservice.productos">
-                    <div class="panel-body">
-                        <div>
-                          <p *ngFor="let product of userservice.productos">{{ product.nombre }}, {{ product.calle }}</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Productos
+            </button>
+            <div class="dropdown-menu">
+              <div (click)="transferDataSuccess(product)" style="cursor: pointer;" *ngFor="let product of userservice.productos" class="dropdown-item">{{ product.nombre }}</div>
             </div>
         </div>
     </div>
 
     <div class="col-sm-6">
-        <div dnd-droppable class="panel panel-info" (onDropSuccess)="transferDataSuccess($event)">
-            <div class="panel-heading">Lugar para dejar caer (Items:{{receivedData.length}})</div>
+        <div *ngIf="receivedData.length > 0" class="panel panel-info">
+            <div class="panel-heading">Productos para comparar (Items:{{receivedData.length}})</div>
             <div class="panel-body">
-                <div [hidden]="!receivedData.length > 0" *ngFor="let data of receivedData">{{ data.dragData[0].nombre }}</div>
+                <div *ngFor="let data of receivedData">{{ data.nombre }}</div>
             </div>
         </div>
     </div>
 </div>
+
+<br><br>
+<p *ngIf="distancia > 0">La distancia entre los dos productos seleccionados es {{ distancia }} metros </p>

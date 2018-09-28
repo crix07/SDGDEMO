@@ -21,7 +21,6 @@ import { ViewProductComponent } from './components/view-product/view-product.com
 import { DistanciaComponent } from './components/distancia/distancia.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {DndModule} from 'ng2-dnd';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +37,6 @@ import {DndModule} from 'ng2-dnd';
   ],
   imports: [
     BrowserModule,
-    DndModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
     APP_ROUTES,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 
 @Component({
@@ -6,21 +6,27 @@ import { UsersService } from '../../services/users.service';
   templateUrl: './distancia.component.html',
   styles: []
 })
-export class DistanciaComponent implements OnInit {
+export class DistanciaComponent {
+  availableProducts: Array<any> = [];
+  shoppingBasket: Array<any> = [];
 
-  constructor(public userservice: UsersService) {}
-
-  ngOnInit() {
+  constructor(public userservice: UsersService) {
   }
   
   receivedData: Array<any> = [];
+  public distancia: number;
 
   transferDataSuccess($event: any) {
+    this.distancia = 0;
     let nopduplicated = this.receivedData.filter(received => {
-      return received.dragData[0]._id === $event.dragData[0]._id
+      return received._id === $event._id
     })    
     if ( this.receivedData.length < 2 && nopduplicated.length < 1 ) {
-      this.receivedData.push($event);
+      this.receivedData.push($event);      
+    }
+    if (this.receivedData.length === 2) {
+       let distancia = this.calculateDistance(this.receivedData[0], this.receivedData[1])
+       this.distancia = Math.round(distancia)
     }
   }
 
@@ -45,5 +51,5 @@ export class DistanciaComponent implements OnInit {
     const distance = R * c;
     return distance; // in meters
   }
-  
 }
+
